@@ -1,0 +1,6 @@
+{
+	"nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix",
+	"C_Cpp.intelliSenseEngine": "disabled",
+	"clangd.enable": true,
+	"clangd.path": "clangd"
+}
