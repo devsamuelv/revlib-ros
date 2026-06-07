@@ -1,0 +1,3 @@
+[submodule "pkgs/sparkcan"]
+	path = pkgs/sparkcan
+	url = git@github.com:grayson-arendt/sparkcan.git

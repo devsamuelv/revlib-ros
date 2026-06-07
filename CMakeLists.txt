@@ -4,6 +4,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/pkgs/sparkcan/CMakeLists.txt")
+    message(FATAL_ERROR "The submodule directory is empty! Please run: git submodule update --init --recursive")
+endif()
+
 if(CMAKE_EXPORT_COMPILE_COMMANDS)
   set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES 
       ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})
@@ -12,15 +16,15 @@ endif()
 project(revlib-ros VERSION 0.1.0 LANGUAGES C CXX)
 add_executable(revlib-ros ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
-find_package(fmt REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
 
-include_directories(${OpenCV_INCLUDE_DIRS})
+add_subdirectory(${CMAKE_SOURCE_DIR}/pkgs/sparkcan EXCLUDE_FROM_ALL)
+include_directories(${CMAKE_SOURCE_DIR}/pkgs/sparkcan/include)
+
 include_directories(src)
-target_include_directories(revlib-ros PRIVATE ${CMAKE_SOURCE_DIR}/REVLib-cpp-2026.0.5-headers/rev)
 
 target_link_libraries(revlib-ros
   rclcpp::rclcpp

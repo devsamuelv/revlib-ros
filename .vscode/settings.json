@@ -2,5 +2,9 @@
 	"nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix",
 	"C_Cpp.intelliSenseEngine": "disabled",
 	"clangd.enable": true,
-	"clangd.path": "clangd"
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.pathFallback": "/home/samuel/.vscode-server/data/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.0/clangd_21.1.0/bin/clangd",
+  "clangd.arguments": [
+    "--resource-dir=/usr/lib/llvm-18/lib/clang/18/"
+  ]
 }
