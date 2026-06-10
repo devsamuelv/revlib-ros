@@ -42,12 +42,12 @@
               (with pkgs.rosPackages.humble;
                 buildEnv {
                   paths = [
-                    image-transport
                     ros-core
                     ament-cmake
                     ament-cmake-core
                     ament-cmake-ros
                     ament-cmake-auto
+                    std-srvs
 
                     # ... other ROS packages
                   ];
@@ -88,6 +88,7 @@
                     ament-cmake-core
                     ament-cmake-ros
                     ament-cmake-auto
+                    std-srvs
 
                     # ... other ROS packages
                   ];

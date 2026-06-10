@@ -18,6 +18,12 @@ add_executable(revlib-ros ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_srvs REQUIRED)
+
+ament_target_dependencies(revlib-ros
+  rclcpp
+  std_srvs
+)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
 
@@ -29,7 +35,6 @@ include_directories(src)
 target_link_libraries(revlib-ros
   rclcpp::rclcpp
 )
-target_link_libraries(revlib-ros fmt::fmt)
 
 # Dont forget to add ament export include and dependcies calls from template 
 
